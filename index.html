@@ -44,7 +44,35 @@
         /* Publications */
         .paper { margin-bottom: 30px; padding: 20px; background: #fafafa; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; display: flex; gap: 20px; align-items: flex-start; }
         .paper:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .paper-thumb { width: 140px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid #e0e0e0; flex-shrink: 0; background-color: #eee; }
+        
+        /* --- [수정됨] Paper Thumb (이미지 없을 때 흰색 블랭크 처리) --- */
+        .paper-thumb {
+            width: 140px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0; /* 테두리는 유지하여 흰색 배경과 구분 */
+            flex-shrink: 0;
+            
+            /* 기본 배경색을 흰색으로 설정 */
+            background-color: #fff;
+
+            /* 이미지 로드 실패 시 깨진 아이콘을 숨기기 위한 처리 */
+            position: relative; 
+            overflow: hidden;
+        }
+
+        /* 이미지가 정상적으로 로드되지 않았을 때 이 부분이 보여집니다 */
+        .paper-thumb:before {
+            content: ''; /* 빈 내용 */
+            display: block;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #fff; /* 흰색으로 덮어쓰기 */
+            z-index: 1; /* 이미지 위에 표시 */
+        }
+        
         .paper-info { flex: 1; }
         .paper-title { font-size: 1.1em; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; line-height: 1.4; }
         .paper-authors { color: #555; margin-bottom: 8px; font-size: 0.95em; }
@@ -56,12 +84,12 @@
         .paper-links a { padding: 6px 14px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; transition: background 0.2s; }
         .paper-links a:hover { background: #1d4ed8; }
 
-        /* --- [수정됨] Projects (Accordion Style) --- */
+        /* Projects (Accordion Style) */
         .project-item {
             margin-bottom: 15px;
             background: #fafafa;
             border-radius: 8px;
-            overflow: hidden; /* 내부 내용이 튀어나오지 않게 */
+            overflow: hidden;
             transition: box-shadow 0.2s;
         }
 
@@ -69,7 +97,6 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* 클릭 가능한 헤더 영역 */
         .project-header {
             padding: 20px;
             cursor: pointer;
@@ -100,7 +127,6 @@
             font-size: 0.95em;
         }
 
-        /* 화살표 아이콘 */
         .arrow-icon {
             width: 24px;
             height: 24px;
@@ -109,17 +135,15 @@
             transition: transform 0.3s ease;
         }
 
-        /* 활성화(펼쳐짐) 상태일 때 화살표 회전 */
         .project-item.active .arrow-icon {
             transform: rotate(180deg);
             opacity: 1;
         }
 
-        /* 숨겨진 상세 내용 영역 */
         .project-details {
-            max-height: 0; /* 기본 높이 0 */
+            max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease-out; /* 부드러운 슬라이드 애니메이션 */
+            transition: max-height 0.3s ease-out;
             background-color: #fff;
             border-top: 1px solid #eee;
         }
@@ -131,7 +155,6 @@
             line-height: 1.7;
         }
 
-        /* 상세 내용 내부 리스트 스타일 */
         .project-details-content ul {
             margin-left: 20px;
             margin-top: 10px;
@@ -181,7 +204,7 @@
                 </div>
 
                 <div class="profile-image-container">
-                    <img src="/images/Gyu-Won_Choi.jpg" alt="Gyuwon Choi" class="profile-image">
+                    <img src="/images/Gyu-Won_Choi.jpg" alt="Gyu-Won Choi" class="profile-image">
                 </div>
             </div>
         </header>
@@ -242,6 +265,7 @@
             </div>
 
             <div class="paper">
+                <img src="" alt="Paper Thumbnail" class="paper-thumb">
                 <div class="paper-info">
                     <div class="paper-title">Energy-Based Domain Adaptation Without Intermediate Domain Dataset for Foggy Scene Segmentation</div>
                     <div class="paper-authors">
@@ -250,7 +274,7 @@
                     </div>
                     <div class="paper-venue">
                         IEEE Transactions on Image Processing
-                        <span class="paper-date-badge">2024</span>
+                        <span class="paper-date-badge">Oct 2024</span>
                     </div>
                     <div class="paper-links">
                         <a href="https://ieeexplore.ieee.org/abstract/document/10735117" target="_blank">Paper</a>
