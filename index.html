@@ -8,317 +8,150 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* --- 기본 스타일 유지 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        /* Header & Links */
+        header { margin-bottom: 60px; padding-bottom: 30px; border-bottom: 1px solid #e5e5e5; }
+        .header-content { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; }
+        .header-text { flex: 1; }
+        .profile-image-container { flex-shrink: 0; }
+        .profile-image { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { font-size: 2.5em; font-weight: 600; margin-bottom: 10px; color: #1a1a1a; }
+        .subtitle { font-size: 1.1em; color: #666; margin-bottom: 20px; }
+        .intro { font-size: 1em; line-height: 1.8; color: #444; margin: 20px 0; }
+        .contact-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+        .contact-links a { color: #2563eb; text-decoration: none; font-size: 0.95em; transition: color 0.2s; }
+        .contact-links a:hover { color: #1d4ed8; text-decoration: underline; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fff;
-        }
+        /* Sections */
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.8em; font-weight: 600; margin-bottom: 25px; color: #1a1a1a; padding-bottom: 10px; border-bottom: 2px solid #2563eb; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        /* News */
+        .news-item { margin-bottom: 20px; padding: 15px; background: #f8f9fa; border-radius: 6px; border-left: 3px solid #2563eb; }
+        .news-date { font-size: 0.9em; color: #666; font-weight: 500; }
+        .news-content { margin-top: 5px; color: #444; }
 
-        /* --- Header Styles 수정됨 --- */
-        header {
-            margin-bottom: 60px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid #e5e5e5;
-        }
+        /* Research Interests */
+        .interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
+        .interest-item { padding: 15px; background: #f0f7ff; border-radius: 6px; border-left: 3px solid #2563eb; }
+        .interest-title { font-weight: 600; color: #1a1a1a; margin-bottom: 5px; }
+        .interest-desc { font-size: 0.9em; color: #555; }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-        }
+        /* Publications */
+        .paper { margin-bottom: 30px; padding: 20px; background: #fafafa; border-radius: 8px; transition: transform 0.2s, box-shadow 0.2s; display: flex; gap: 20px; align-items: flex-start; }
+        .paper:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .paper-thumb { width: 140px; height: 100px; object-fit: cover; border-radius: 6px; border: 1px solid #e0e0e0; flex-shrink: 0; background-color: #eee; }
+        .paper-info { flex: 1; }
+        .paper-title { font-size: 1.1em; font-weight: 600; color: #1a1a1a; margin-bottom: 8px; line-height: 1.4; }
+        .paper-authors { color: #555; margin-bottom: 8px; font-size: 0.95em; }
+        .paper-authors .me { font-weight: 600; color: #2563eb; }
+        .paper-authors .equal-contrib { font-size: 0.85em; vertical-align: super; }
+        .paper-venue { color: #666; font-style: italic; margin-bottom: 10px; font-size: 0.95em; }
+        .paper-date-badge { display: inline-block; background-color: #e5e7eb; color: #4b5563; font-size: 0.8em; font-weight: 500; padding: 2px 8px; border-radius: 4px; margin-left: 10px; vertical-align: middle; }
+        .paper-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .paper-links a { padding: 6px 14px; background: #2563eb; color: white; text-decoration: none; border-radius: 4px; font-size: 0.9em; transition: background 0.2s; }
+        .paper-links a:hover { background: #1d4ed8; }
 
-        .header-text {
-            flex: 1;
-        }
-
-        .profile-image-container {
-            flex-shrink: 0;
-        }
-
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%; /* 원형으로 만들기 */
-            object-fit: cover;
-            border: 3px solid #f0f0f0;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: #1a1a1a;
-        }
-
-        .subtitle {
-            font-size: 1.1em;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .intro {
-            font-size: 1em;
-            line-height: 1.8;
-            color: #444;
-            margin: 20px 0;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .contact-links a {
-            color: #2563eb;
-            text-decoration: none;
-            font-size: 0.95em;
-            transition: color 0.2s;
-        }
-
-        .contact-links a:hover {
-            color: #1d4ed8;
-            text-decoration: underline;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        h2 {
-            font-size: 1.8em;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #2563eb;
-        }
-
-        /* --- Paper Styles 수정됨 --- */
-        .paper {
-            margin-bottom: 30px;
-            padding: 20px;
+        /* --- [수정됨] Projects (Accordion Style) --- */
+        .project-item {
+            margin-bottom: 15px;
             background: #fafafa;
             border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex; /* 썸네일과 텍스트 가로 배치 */
-            gap: 20px;
-            align-items: flex-start;
+            overflow: hidden; /* 내부 내용이 튀어나오지 않게 */
+            transition: box-shadow 0.2s;
         }
 
-        .paper:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .project-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
-        /* 논문 썸네일 스타일 */
-        .paper-thumb {
-            width: 140px;      /* 썸네일 너비 고정 */
-            height: 100px;     /* 썸네일 높이 고정 */
-            object-fit: cover; /* 비율 유지하며 꽉 채우기 */
-            border-radius: 6px;
-            border: 1px solid #e0e0e0;
-            flex-shrink: 0;    /* 크기 줄어들지 않게 고정 */
-            background-color: #eee; /* 이미지가 없을 때 회색 배경 */
-        }
-
-        .paper-info {
-            flex: 1; /* 남은 공간 모두 차지 */
-        }
-
-        .paper-title {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .paper-authors {
-            color: #555;
-            margin-bottom: 8px;
-            font-size: 0.95em;
-        }
-
-        .paper-authors .me {
-            font-weight: 600;
-            color: #2563eb;
-        }
-
-        .paper-authors .equal-contrib {
-            font-size: 0.85em;
-            vertical-align: super;
-        }
-
-        .paper-venue {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 10px;
-            font-size: 0.95em;
-        }
-
-        .paper-links {
+        /* 클릭 가능한 헤더 영역 */
+        .project-header {
+            padding: 20px;
+            cursor: pointer;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .paper-links a {
-            padding: 6px 14px;
-            background: #2563eb;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 0.9em;
+            justify-content: space-between;
+            align-items: center;
+            background: #fafafa;
             transition: background 0.2s;
         }
 
-        .paper-links a:hover {
-            background: #1d4ed8;
+        .project-header:hover {
+            background: #f0f0f0;
         }
 
-        /* News & Project Styles */
-        .news-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 3px solid #2563eb;
-        }
-
-        .news-date {
-            font-size: 0.9em;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .news-content {
-            margin-top: 5px;
-            color: #444;
-        }
-
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .interest-item {
-            padding: 15px;
-            background: #f0f7ff;
-            border-radius: 6px;
-            border-left: 3px solid #2563eb;
-        }
-
-        .interest-title {
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 5px;
-        }
-
-        .interest-desc {
-            font-size: 0.9em;
-            color: #555;
-        }
-
-        .project-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background: #fafafa;
-            border-radius: 8px;
+        .project-info {
+            flex: 1;
         }
 
         .project-title {
             font-size: 1.15em;
             font-weight: 600;
             color: #1a1a1a;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .project-desc {
-            color: #555;
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* 화살표 아이콘 */
+        .arrow-icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 15px;
+            opacity: 0.5;
+            transition: transform 0.3s ease;
+        }
+
+        /* 활성화(펼쳐짐) 상태일 때 화살표 회전 */
+        .project-item.active .arrow-icon {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+
+        /* 숨겨진 상세 내용 영역 */
+        .project-details {
+            max-height: 0; /* 기본 높이 0 */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out; /* 부드러운 슬라이드 애니메이션 */
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+
+        .project-details-content {
+            padding: 20px;
+            color: #444;
+            font-size: 0.95em;
             line-height: 1.7;
         }
 
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+        /* 상세 내용 내부 리스트 스타일 */
+        .project-details-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .project-details-content li {
+            margin-bottom: 5px;
         }
 
-        .skill-tag {
-            padding: 8px 16px;
-            background: #e5e7eb;
-            color: #374151;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 500;
-        }
+        /* Skills */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+        .skill-tag { padding: 8px 16px; background: #e5e7eb; color: #374151; border-radius: 20px; font-size: 0.9em; font-weight: 500; }
+        
+        footer { margin-top: 60px; padding-top: 30px; border-top: 1px solid #e5e5e5; text-align: center; color: #666; font-size: 0.9em; }
 
-        footer {
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #e5e5e5;
-            text-align: center;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .paper-date-badge {
-            display: inline-block;
-            background-color: #e5e7eb;
-            color: #4b5563;
-            font-size: 0.8em;
-            font-weight: 500;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 10px;
-            vertical-align: middle;
-        }
-
-        /* 모바일 반응형 처리 */
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column-reverse; /* 모바일에서는 사진이 텍스트 위로 가거나 아래로 가게 조정 */
-                align-items: center;
-                text-align: center;
-            }
-            
-            .contact-links {
-                justify-content: center;
-            }
-
-            .paper {
-                flex-direction: column; /* 모바일에서는 썸네일이 위, 글이 아래 */
-                align-items: center;
-            }
-
-            .paper-thumb {
-                width: 100%;
-                height: auto;
-                max-height: 200px;
-                margin-bottom: 15px;
-            }
-            
+            .header-content { flex-direction: column-reverse; align-items: center; text-align: center; }
+            .contact-links { justify-content: center; }
+            .paper { flex-direction: column; align-items: center; }
+            .paper-thumb { width: 100%; height: auto; max-height: 200px; margin-bottom: 15px; }
             h1 { font-size: 2em; }
             h2 { font-size: 1.5em; }
             .interests-grid { grid-template-columns: 1fr; }
@@ -369,7 +202,7 @@
             <h2>🔬 Research Interests</h2>
             <div class="interests-grid">
                 <div class="interest-item">
-                    <div class="interest-title">LLM/MLLM Safety</div>
+                    <div class="interest-title">LLM / MLLM Safety</div>
                     <div class="interest-desc">Jailbreak attacks, defense mechanisms, and adversarial robustness</div>
                 </div>
                 <div class="interest-item">
@@ -388,7 +221,6 @@
             
             <div class="paper">
                 <img src="/images/COIR.png" alt="COIR Paper Thumbnail" class="paper-thumb">
-                
                 <div class="paper-info">
                     <div class="paper-title">COIR: Chain-of-Intention Reasoning Elicits Defense in Multimodal Large Language Models</div>
                     <div class="paper-authors">
@@ -428,7 +260,6 @@
 
             <div class="paper">
                 <img src="/images/ICCV_BRAVO.png" alt=" aper Thumbnail" class="paper-thumb">
-                
                 <div class="paper-info">
                     <div class="paper-title">A Subdomain-Specific Knowledge Distillation for Unsupervised Domain Adaptation in Adverse Weather Conditions</div>
                     <div class="paper-authors">
@@ -454,17 +285,50 @@
             <h2>💼 Projects & Experience</h2>
             
             <div class="project-item">
-                <div class="project-title">Technical Support Intern (R&D General) @ Continental Automotive Electronics LLC.</div>
-                <div class="project-desc">
-                    Jan 2021 - June 2021
+                <div class="project-header">
+                    <div class="project-info">
+                        <div class="project-title">Technical Support Intern (R&D General) @ Continental Automotive Electronics LLC.</div>
+                        <div class="project-desc">Jan 2021 - June 2021</div>
+                    </div>
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                
+                <div class="project-details">
+                    <div class="project-details-content">
+                        <p>Worked in a group to manage customer’s requirement and conduct product test management.</p>
+                        <ul>
+                            <li>Assisted managing customer requirements and standards using IBM DOORS, JIRA.<li>
+                            <li>Supported product test management work by using SAP to manage test samples and revising Excel VBA code that manages product test schedules.<li>
+                            <li>Wrote a Python program that draws tables and charts on Excel that shows whether customer requirements met by using csv data from IBM Doors.<li>
+                            <li>Gave an AI seminar for about 80 R&D researchers and presented examples and principles of deep learning used in the automotive industry.</li>   
+                        </ul>
+                    </div>
                 </div>
             </div>
+
             <div class="project-item">
-                <div class="project-title">Autonomous Driving Intern @ ADAS ONE</div>
-                <div class="project-desc">
-                    Aug 2020 - Dec 2020
+                <div class="project-header">
+                    <div class="project-info">
+                        <div class="project-title">Autonomous Driving Intern @ ADAS ONE</div>
+                        <div class="project-desc">Aug 2020 - Dec 2020</div>
+                        <a href="https://m.breaknews.com/773563" target="_blank">News Link</a>
+                    </div>
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+                
+                <div class="project-details">
+                    <div class="project-details-content">
+                        <p>Worked in a group to implement and program a autonomous driving system.</p>
+                        <ul>
+                            <li>Contributed a project to develop self-driving cars based on real-time traffic signal information conducted by the KoROAD(Korea Road Traffic Authority).</li>
+                            <li>Wrote and implemented a OBU(On Board Unit) package in C++ and ROS to receive and parse the traffic light information of actual road.</li>
+                            <li>Implemented and tested self-driving systems that make U-turn, left turn and right turn based on actual road traffic information delivered through LTE protocol.</li>
+                            
+                        </ul>
+                    </div>
                 </div>
             </div>
+            
         </section>
 
         <section id="skills">
@@ -481,5 +345,27 @@
             <p>&copy; 2025 Gyu-Won Choi. Last updated: December 2025</p>
         </footer>
     </div>
+
+    <script>
+        // 모든 프로젝트 헤더 선택
+        const projectHeaders = document.querySelectorAll('.project-header');
+
+        projectHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement; // .project-item
+                const details = item.querySelector('.project-details');
+                
+                // Toggle 'active' class
+                item.classList.toggle('active');
+
+                // 높이 계산하여 부드럽게 펼치기
+                if (item.classList.contains('active')) {
+                    details.style.maxHeight = details.scrollHeight + "px";
+                } else {
+                    details.style.maxHeight = null;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
