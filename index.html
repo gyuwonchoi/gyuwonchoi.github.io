@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gyuwon Choi - Ph.D. Student at KAIST</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎯</text></svg>">
+
     <style>
         * {
             margin: 0;
@@ -25,10 +27,35 @@
             padding: 40px 20px;
         }
 
+        /* --- Header Styles 수정됨 --- */
         header {
             margin-bottom: 60px;
             padding-bottom: 30px;
             border-bottom: 1px solid #e5e5e5;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .profile-image-container {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%; /* 원형으로 만들기 */
+            object-fit: cover;
+            border: 3px solid #f0f0f0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         h1 {
@@ -83,38 +110,16 @@
             border-bottom: 2px solid #2563eb;
         }
 
-        h3 {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1a1a1a;
-        }
-
-        .news-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 3px solid #2563eb;
-        }
-
-        .news-date {
-            font-size: 0.9em;
-            color: #666;
-            font-weight: 500;
-        }
-
-        .news-content {
-            margin-top: 5px;
-            color: #444;
-        }
-
+        /* --- Paper Styles 수정됨 --- */
         .paper {
             margin-bottom: 30px;
             padding: 20px;
             background: #fafafa;
             border-radius: 8px;
             transition: transform 0.2s, box-shadow 0.2s;
+            display: flex; /* 썸네일과 텍스트 가로 배치 */
+            gap: 20px;
+            align-items: flex-start;
         }
 
         .paper:hover {
@@ -122,11 +127,27 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
+        /* 논문 썸네일 스타일 */
+        .paper-thumb {
+            width: 140px;      /* 썸네일 너비 고정 */
+            height: 100px;     /* 썸네일 높이 고정 */
+            object-fit: cover; /* 비율 유지하며 꽉 채우기 */
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+            flex-shrink: 0;    /* 크기 줄어들지 않게 고정 */
+            background-color: #eee; /* 이미지가 없을 때 회색 배경 */
+        }
+
+        .paper-info {
+            flex: 1; /* 남은 공간 모두 차지 */
+        }
+
         .paper-title {
             font-size: 1.1em;
             font-weight: 600;
             color: #1a1a1a;
             margin-bottom: 8px;
+            line-height: 1.4;
         }
 
         .paper-authors {
@@ -171,6 +192,26 @@
 
         .paper-links a:hover {
             background: #1d4ed8;
+        }
+
+        /* News & Project Styles */
+        .news-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .news-date {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .news-content {
+            margin-top: 5px;
+            color: #444;
         }
 
         .interests-grid {
@@ -242,52 +283,71 @@
             font-size: 0.9em;
         }
 
+        /* 모바일 반응형 처리 */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
+            .header-content {
+                flex-direction: column-reverse; /* 모바일에서는 사진이 텍스트 위로 가거나 아래로 가게 조정 */
+                align-items: center;
+                text-align: center;
+            }
+            
+            .contact-links {
+                justify-content: center;
             }
 
-            h2 {
-                font-size: 1.5em;
+            .paper {
+                flex-direction: column; /* 모바일에서는 썸네일이 위, 글이 아래 */
+                align-items: center;
             }
 
-            .interests-grid {
-                grid-template-columns: 1fr;
+            .paper-thumb {
+                width: 100%;
+                height: auto;
+                max-height: 200px;
+                margin-bottom: 15px;
             }
+            
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .interests-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Gyuwon Choi</h1>
-            <div class="subtitle">Ph.D. Student </div>
-            <div class="subtitle">KAIST · Brain Reverse Engineering and Imaging Lab </div>
-            
-            <div class="intro">
-                I am a Ph.D. student in the School of Electrical Engineering at KAIST, advised by Professor Dae-Shik Kim. My research focuses on the interpretability, explainability, and safety of Large Language Models (LLMs) and Multimodal Large Language Models (MLLMs). I am particularly interested in understanding and improving the robustness of these models, with applications extending to Vision-Language-Action models (VLA) and autonomous driving systems.
-            </div>
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Gyuwon Choi</h1>
+                    <div class="subtitle">Ph.D. Student </div>
+                    <div class="subtitle">KAIST · Brain Reverse Engineering and Imaging Lab </div>
+                    
+                    <div class="intro">
+                        I am a Ph.D. student in the School of Electrical Engineering at KAIST, advised by Professor Dae-Shik Kim. My research focuses on the interpretability, explainability, and safety of Large Language Models (LLMs) and Multimodal Large Language Models (MLLMs). I am particularly interested in understanding and improving the robustness of these models, with applications extending to Vision-Language-Action models (VLA) and autonomous driving systems.
+                    </div>
 
-            <div class="contact-links">
-                <a href="mailto:gw.choi@kaist.ac.kr">📧 Email</a>
-                <a href="https://github.com/gyuwonchoi" target="_blank">💻 GitHub</a>
-                <a href="https://scholar.google.com/citations?user=RkF1-PQAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
-                <a href="https://www.linkedin.com/in/gyuwon-choi/" target="_blank">💼 LinkedIn</a>
+                    <div class="contact-links">
+                        <a href="mailto:gw.choi@kaist.ac.kr">📧 Email</a>
+                        <a href="https://github.com/gyuwonchoi" target="_blank">💻 GitHub</a>
+                        <a href="https://scholar.google.com/citations?user=RkF1-PQAAAAJ&hl=en" target="_blank">🎓 Google Scholar</a>
+                        <a href="https://www.linkedin.com/in/gyuwon-choi/" target="_blank">💼 LinkedIn</a>
+                    </div>
+                </div>
+
+                <div class="profile-image-container">
+                    <img src="/images/Gyu-Won_Choi.jpg" alt="Gyuwon Choi" class="profile-image">
+                </div>
             </div>
         </header>
 
         <section id="news">
             <h2>📰 News</h2>
             <div class="news-item">
-                <div class="news-date">Dec 2024</div>
-                <div class="news-content">Our paper on MLLM jailbreak attacks and defenses has been accepted to NeurIPS 2024 Workshop!</div>
+                <div class="news-date">Dec 2025</div>
+                <div class="news-content">Present our paper COIR at NeurIPS 2025 Worshop on ReliableML in San Diego, USA!</div>
             </div>
             <div class="news-item">
-                <div class="news-date">Aug 2024</div>
-                <div class="news-content">Presented COIR at NeurIPS 2025 in San Diego, USA</div>
-            </div>
-            <div class="news-item">
-                <div class="news-date">May 2025</div>
+                <div class="news-date">Sep 2025</div>
                 <div class="news-content">COIR paper accepted to NeurIPS 2025 Workshop!</div>
             </div>
         </section>
@@ -318,34 +378,42 @@
             <h2>📝 Publications</h2>
             
             <div class="paper">
-                <div class="paper-title">COIR: Chain-of-Intention Reasoning Elicits Defense in Multimodal Large Language Models</div>
-                <div class="paper-authors">
-                    <span class="me">Gyuwon Choi</span><span class="equal-contrib">*</span>, 
-                    Donggon Jang<span class="equal-contrib">*</span>, 
-                    Dae-Shik Kim
-                    <br>
-                    <span style="font-size: 0.85em; color: #666;">* Equal contribution</span>
-                </div>
-                <div class="paper-venue">NeurIPS 2025 Workshop on Reliable ML</div>
-                <div class="paper-links">
-                    <a href="https://openreview.net/pdf?id=LNb8cS3KgX" target="_blank">Paper</a>
-                    <a href="https://neurips.cc/media/neurips-2025/Slides/125217.pdf" target="_blank">Poster</a>
+                <img src="/images/COIR.png" alt="COIR Paper Thumbnail" class="paper-thumb">
+                
+                <div class="paper-info">
+                    <div class="paper-title">COIR: Chain-of-Intention Reasoning Elicits Defense in Multimodal Large Language Models</div>
+                    <div class="paper-authors">
+                        <span class="me">Gyuwon Choi</span><span class="equal-contrib">*</span>, 
+                        Donggon Jang<span class="equal-contrib">*</span>, 
+                        Dae-Shik Kim
+                        <br>
+                        <span style="font-size: 0.85em; color: #666;">* Equal contribution</span>
+                    </div>
+                    <div class="paper-venue">NeurIPS 2025 Workshop on Reliable ML</div>
+                    <div class="paper-links">
+                        <a href="https://openreview.net/pdf?id=LNb8cS3KgX" target="_blank">Paper</a>
+                        <a href="https://neurips.cc/media/neurips-2025/Slides/125217.pdf" target="_blank">Poster</a>
+                    </div>
                 </div>
             </div>
 
             <div class="paper">
-                <div class="paper-title">A Subdomain-Specific Knowledge Distillation for Unsupervised Domain Adaptation in Adverse Weather Conditions</div>
-                <div class="paper-authors">
-                    <span class="me">Gyuwon Choi</span><span class="equal-contrib">*</span>, 
-                    Yejin Lee<span class="equal-contrib">*</span>, 
-                    Donggon Jang,
-                    Dae-Shik Kim
-                    <br>
-                    <span style="font-size: 0.85em; color: #666;">* Equal contribution</span>
-                </div>
-                <div class="paper-venue">International Conference on Computer Vision (ICCV) 2023 on BRAVO Worshop</div>
-                <div class="paper-links">
-                    <a href="https://valeoai.github.io/bravo/submissions/bravo_abstract_subdomain_specific_distillation.pdf" target="_blank">Paper</a>
+                <img src="/images/ICCV_BRAVO.png" alt=" aper Thumbnail" class="paper-thumb">
+                
+                <div class="paper-info">
+                    <div class="paper-title">A Subdomain-Specific Knowledge Distillation for Unsupervised Domain Adaptation in Adverse Weather Conditions</div>
+                    <div class="paper-authors">
+                        <span class="me">Gyuwon Choi</span><span class="equal-contrib">*</span>, 
+                        Yejin Lee<span class="equal-contrib">*</span>, 
+                        Donggon Jang,
+                        Dae-Shik Kim
+                        <br>
+                        <span style="font-size: 0.85em; color: #666;">* Equal contribution</span>
+                    </div>
+                    <div class="paper-venue">International Conference on Computer Vision (ICCV) 2023 on BRAVO Worshop</div>
+                    <div class="paper-links">
+                        <a href="https://valeoai.github.io/bravo/submissions/bravo_abstract_subdomain_specific_distillation.pdf" target="_blank">Paper</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -359,36 +427,14 @@
                     Developed an automated code generation system that converts natural language descriptions into executable code. Implemented using large language models with specialized fine-tuning for programming tasks.
                 </div>
             </div>
-
-            <div class="project-item">
-                <div class="project-title">Natural Language to SQL (NL2SQL)</div>
-                <div class="project-desc">
-                    Built a system for translating natural language queries into SQL statements, enabling non-technical users to interact with databases through conversational interfaces.
-                </div>
-            </div>
-
-            <div class="project-item">
-                <div class="project-title">Database Query Routing System</div>
-                <div class="project-desc">
-                    Designed and implemented an intelligent routing system that automatically directs database queries to appropriate data sources based on query characteristics and optimization strategies.
-                </div>
-            </div>
         </section>
 
         <section id="skills">
             <h2>🛠️ Skills & Technologies</h2>
             <div class="skills-container">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">PyTorch</span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">Transformers</span>
                 <span class="skill-tag">LLMs</span>
                 <span class="skill-tag">MLLMs</span>
                 <span class="skill-tag">Computer Vision</span>
-                <span class="skill-tag">NLP</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Database Systems</span>
-                <span class="skill-tag">Machine Learning</span>
                 <span class="skill-tag">Deep Learning</span>
             </div>
         </section>
