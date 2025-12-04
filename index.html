@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyuwon Choi - Ph.D. Student at KAIST</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a1a;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .intro {
+            font-size: 1em;
+            line-height: 1.8;
+            color: #444;
+            margin: 20px 0;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-links a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.2s;
+        }
+
+        .contact-links a:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2563eb;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .news-date {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .news-content {
+            margin-top: 5px;
+            color: #444;
+        }
+
+        .paper {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .paper:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .paper-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .paper-authors {
+            color: #555;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .paper-authors .me {
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        .paper-authors .equal-contrib {
+            font-size: 0.85em;
+            vertical-align: super;
+        }
+
+        .paper-venue {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .paper-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .paper-links a {
+            padding: 6px 14px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .paper-links a:hover {
+            background: #1d4ed8;
+        }
+
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .interest-item {
+            padding: 15px;
+            background: #f0f7ff;
+            border-radius: 6px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .interest-title {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .interest-desc {
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+
+        .project-title {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .project-desc {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: #e5e7eb;
+            color: #374151;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .interests-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gyuwon Choi</h1>
+            <div class="subtitle">Ph.D. Student </div>
+            <div class="subtitle">KAIST · Brain Reverse Engineering  </div>
+            
+            <div class="intro">
+                I am a Ph.D. student in the School of Electrical Engineering at KAIST, advised by Professor Dae-Shik Kim. My research focuses on the interpretability, explainability, and safety of Large Language Models (LLMs) and Multimodal Large Language Models (MLLMs). I am particularly interested in understanding and improving the robustness of these models, with applications extending to Vision-Language-Action models (VLA) and autonomous driving systems.
+            </div>
+
+            <div class="contact-links">
+                <a href="mailto:your.email@kaist.ac.kr">📧 Email</a>
+                <a href="https://github.com/gyuwonchoi" target="_blank">💻 GitHub</a>
+                <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">🎓 Google Scholar</a>
+                <a href="https://www.linkedin.com/in/your-profile" target="_blank">💼 LinkedIn</a>
+            </div>
+        </header>
+
+        <section id="news">
+            <h2>📰 News</h2>
+            <div class="news-item">
+                <div class="news-date">Dec 2024</div>
+                <div class="news-content">Our paper on MLLM jailbreak attacks and defenses has been accepted to NeurIPS 2024 Workshop!</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">Aug 2024</div>
+                <div class="news-content">Presented COIR at ICML 2024 in Vienna, Austria.</div>
+            </div>
+            <div class="news-item">
+                <div class="news-date">May 2024</div>
+                <div class="news-content">COIR paper accepted to ICML 2024!</div>
+            </div>
+        </section>
+
+        <section id="research">
+            <h2>🔬 Research Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-title">LLM/MLLM Safety</div>
+                    <div class="interest-desc">Jailbreak attacks, defense mechanisms, and adversarial robustness</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-title">Model Interpretability</div>
+                    <div class="interest-desc">Understanding and explaining decisions of large language models</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-title">Vision-Language-Action</div>
+                    <div class="interest-desc">Bridging perception, language, and action for embodied AI</div>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-title">Autonomous Driving</div>
+                    <div class="interest-desc">Safe and interpretable AI for autonomous vehicles</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications">
+            <h2>📝 Publications</h2>
+            
+            <div class="paper">
+                <div class="paper-title">Jailbreak and Defense Mechanisms for Multimodal Large Language Models</div>
+                <div class="paper-authors">
+                    <span class="me">Gyuwon Choi</span>, Author2, Author3
+                </div>
+                <div class="paper-venue">NeurIPS 2024 Workshop on Safety in Foundation Models</div>
+                <div class="paper-links">
+                    <a href="#" target="_blank">Paper</a>
+                    <a href="#" target="_blank">arXiv</a>
+                    <a href="#" target="_blank">Code</a>
+                </div>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title">COIR: Compressing Representations of Large Language Models</div>
+                <div class="paper-authors">
+                    <span class="me">Gyuwon Choi</span><span class="equal-contrib">*</span>, 
+                    Donggon Jang<span class="equal-contrib">*</span>, 
+                    Dae-Shik Kim
+                    <br>
+                    <span style="font-size: 0.85em; color: #666;">* Equal contribution</span>
+                </div>
+                <div class="paper-venue">International Conference on Machine Learning (ICML), 2024</div>
+                <div class="paper-links">
+                    <a href="#" target="_blank">Paper</a>
+                    <a href="#" target="_blank">arXiv</a>
+                    <a href="#" target="_blank">Code</a>
+                    <a href="#" target="_blank">Poster</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>💼 Projects & Experience</h2>
+            
+            <div class="project-item">
+                <div class="project-title">Natural Language to Code Generation (NL2Code)</div>
+                <div class="project-desc">
+                    Developed an automated code generation system that converts natural language descriptions into executable code. Implemented using large language models with specialized fine-tuning for programming tasks.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Natural Language to SQL (NL2SQL)</div>
+                <div class="project-desc">
+                    Built a system for translating natural language queries into SQL statements, enabling non-technical users to interact with databases through conversational interfaces.
+                </div>
+            </div>
+
+            <div class="project-item">
+                <div class="project-title">Database Query Routing System</div>
+                <div class="project-desc">
+                    Designed and implemented an intelligent routing system that automatically directs database queries to appropriate data sources based on query characteristics and optimization strategies.
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>🛠️ Skills & Technologies</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">Transformers</span>
+                <span class="skill-tag">LLMs</span>
+                <span class="skill-tag">MLLMs</span>
+                <span class="skill-tag">Computer Vision</span>
+                <span class="skill-tag">NLP</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Database Systems</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Deep Learning</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Gyuwon Choi. Last updated: December 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
